@@ -1,5 +1,3 @@
-"use client";
-import { supabase } from "@/lib/supabase";
 import React, { ReactNode, createContext, startTransition, useContext, useEffect, useOptimistic, useState } from "react";
 
 export const SpinContext = createContext({
@@ -11,19 +9,6 @@ export const SpinContext = createContext({
 export const SpinProvider = ({ children }: { children: ReactNode }) => {
   const [isSpinning, setIsSpinning] = useState(false);
   // subscribe to the supabase websocket
-
-  useEffect(() => {
-    const channelA = supabase.channel("room-1");
-    channelA.subscribe((status) => {
-      // Wait for successful connection
-      if (status !== "SUBSCRIBED") {
-        return null;
-      }
-
-      channelA.on("broadcast", { event: "channel.channel_points_custom_reward_redemption.add" }, (payload) => console.log(payload));
-    });
-  }, []);
-
 
   const Spin = () => {
     setIsSpinning(true);
