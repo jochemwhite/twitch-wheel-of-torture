@@ -1,3 +1,4 @@
+'use client';
 import React, { ReactNode, createContext, startTransition, useContext, useEffect, useOptimistic, useState } from "react";
 
 export const SpinContext = createContext({
